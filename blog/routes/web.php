@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/connexion/create', function () {
+    return view('/connexion/create');
+});
+
+Route::post('/connexion/create', [Register::class, 'store']);
+

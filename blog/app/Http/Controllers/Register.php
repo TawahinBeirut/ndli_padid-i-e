@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class Register extends Controller
-{
+class Register extends Controller{
+
     public function store(){
-        // var_dump(request()->all());
-        $name = request()->first_name . " " . request()->last_name;
-        // dd($name);
         $test = request()->validate([
             'skin' => 'required|max:255',
             'username' => 'required|max:255|unique:username',
@@ -18,7 +17,7 @@ class Register extends Controller
         ]);
 
         $attributes = [
-            'skin' => $name,
+            'skin' => $test['skin'],
             'username' => $test['email'],
             'password' => $test['password']
         ];
@@ -31,4 +30,5 @@ class Register extends Controller
         } else {
             return redirect('/register');
         }
+    }
 }
