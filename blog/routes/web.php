@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Register;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/connexion/create', function () {
+Route::get('/register/create', function () {
     return view('/connexion/create');
 });
 
-Route::post('/connexion/create', [Register::class, 'store']);
+Route::post('/register', [Register::class, 'store']);
 
